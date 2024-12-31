@@ -3,23 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Birthday Party Website</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Birthday Website</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Welcome to the Birthday Party Planner!</h1>
+  <!-- Birthday Picture and Tune -->
+  <header class="birthday-header">
+    <img src="birthday.jpg" alt="Birthday Celebration" class="birthday-image">
+    <audio controls autoplay loop>
+      <source src="birthday-tune.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
   </header>
-  
-  <main>
-    <button id="notify-btn">Click Me for a Notification</button>
-  </main>
 
-  <footer>
-    <p>&copy; 2024 Birthday Party Website</p>
-  </footer>
+  <!-- Button to Open Message Form -->
+  <div class="form-button-container">
+    <button id="openFormButton">Write a Message</button>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/notify-js@latest/dist/notify.min.js"></script>
-  <script src="app.js"></script>
+  <!-- Form for Submitting Messages -->
+  <div id="messageForm" class="form-container hidden">
+    <form id="messageFormElement">
+      <h2>Send Your Message</h2>
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="message">Your Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+      <button type="submit">Submit</button>
+      <button type="button" id="closeFormButton">Close</button>
+    </form>
+  </div>
+
+  <!-- Scrolling Messages -->
+  <section class="messages-section">
+    <div id="messageScroller" class="message-scroller">
+      <!-- Messages will appear here -->
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
