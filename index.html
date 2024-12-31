@@ -4,43 +4,135 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Website</title>
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&family=Caveat&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f7f4f2;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .header {
+      font-family: 'Caveat', cursive;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #6a4c93;
+    }
+
+    .sub-header {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .message {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #555;
+    }
+
+    .footer {
+      margin-top: 2rem;
+    }
+
+    .footer img {
+      width: 50px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .form-button {
+      background-color: #f48fb1;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-button:hover {
+      background-color: #ec407a;
+    }
+
+    #messageScroller {
+      margin-top: 20px;
+      background: #ffe0b2;
+      padding: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      white-space: nowrap;
+      animation: scroll 10s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
 </head>
 <body>
-  <!-- Birthday Picture and Tune -->
-  <header class="birthday-header">
-    <img src="birthday.jpg" alt="Birthday Celebration" class="birthday-image">
-    <audio controls autoplay loop>
-      <source src="birthday-tune.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-  </header>
-
-  <!-- Button to Open Message Form -->
-  <div class="form-button-container">
-    <button id="openFormButton">Write a Message</button>
-  </div>
-
-  <!-- Form for Submitting Messages -->
-  <div id="messageForm" class="form-container hidden">
-    <form id="messageFormElement">
-      <h2>Send Your Message</h2>
-      <label for="name">Your Name:</label>
-      <input type="text" id="name" name="name" required>
-      <label for="message">Your Message:</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-      <button type="submit">Submit</button>
-      <button type="button" id="closeFormButton">Close</button>
-    </form>
-  </div>
-
-  <!-- Scrolling Messages -->
-  <section class="messages-section">
-    <div id="messageScroller" class="message-scroller">
-      <!-- Messages will appear here -->
+  <div class="container">
+    <div class="header">Royal Group</div>
+    <div class="sub-header">Happy Birthday 🎉</div>
+    <div class="card">
+      <img src="your-image.jpg" alt="Birthday">
+      <div class="message">Wishing you a beautiful year and a heart full of happiness.</div>
     </div>
-  </section>
+    <button class="form-button" onclick="openForm()">Send a Message</button>
+    <div id="messageScroller">🎈 Message 1 | 🎉 Message 2 | 💌 Message 3</div>
+    <div class="footer">
+      <img src="cake-icon.png" alt="Birthday Cake">
+    </div>
+  </div>
 
-  <script src="script.js"></script>
+  <!-- Message Form -->
+  <form id="messageFormElement" name="messages" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2);">
+    <h2>Send Your Message</h2>
+    <input type="hidden" name="form-name" value="messages">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="message">Your Message:</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+    <button type="submit">Submit</button>
+    <button type="button" id="closeFormButton" onclick="closeForm()">Close</button>
+  </form>
+
+  <script>
+    function openForm() {
+      document.getElementById('messageFormElement').style.display = 'block';
+    }
+
+    function closeForm() {
+      document.getElementById('messageFormElement').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
